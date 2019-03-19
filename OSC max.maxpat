@@ -39,13 +39,15 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-58",
+					"fontname" : "Arial",
+					"fontsize" : 13.0,
+					"id" : "obj-10",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 536.0, 440.0, 48.0, 22.0 ],
-					"text" : "replace"
+					"patching_rect" : [ 660.0, 478.0, 119.0, 23.0 ],
+					"text" : "read drumLoop.aif"
 				}
 
 			}
@@ -81,7 +83,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 321.0, 593.0, 160.0, 60.0 ],
-					"presentation_linecount" : 3,
 					"text" : "Groove unit that accesses the sound from the buffer\n\n"
 				}
 
@@ -94,7 +95,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 486.0, 690.0, 24.0, 24.0 ]
+					"patching_rect" : [ 379.0, 690.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -118,7 +119,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 557.5, 690.0, 37.0, 22.0 ],
+					"patching_rect" : [ 536.0, 740.0, 37.0, 22.0 ],
 					"text" : "dac~"
 				}
 
@@ -144,7 +145,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 486.0, 566.0, 55.0, 22.0 ],
+					"patching_rect" : [ 486.0, 575.0, 55.0, 22.0 ],
 					"text" : "startloop"
 				}
 
@@ -242,7 +243,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
-					"patching_rect" : [ 549.5, 482.0, 56.0, 22.0 ],
+					"patching_rect" : [ 660.0, 517.0, 56.0, 22.0 ],
 					"text" : "buffer~ a"
 				}
 
@@ -527,6 +528,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-37", 0 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-101", 0 ],
 					"source" : [ "obj-100", 0 ]
 				}
@@ -669,13 +677,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-68", 0 ],
 					"source" : [ "obj-55", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-37", 0 ],
-					"source" : [ "obj-58", 0 ]
 				}
 
 			}
