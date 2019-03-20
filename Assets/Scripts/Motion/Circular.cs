@@ -8,7 +8,6 @@ public class Circular : MonoBehaviour
     public Vector3 axis = Vector3.right;
     public Vector3 moveTo;
 
-
     public float radius = 2.0f;
     public float radiusSpeed = 0.5f;
     public float BPM = 500.0f;
@@ -19,14 +18,17 @@ public class Circular : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        osc = (OSC)FindObjectOfType(typeof(OSC));
+        //osc = (OSC)FindObjectOfType(typeof(OSC));
+        //center = GameObject.FindWithTag("Center").transform;
     }
 
     private void OnValidate()
     {
-        rotationSpeed = BPM / 60 * 2 * radius / 2;
-        OSCSetBPM();
-        //OSCPlayStatus();
+        if (Application.isPlaying)
+        {
+            rotationSpeed = BPM / 60 * 2 * radius / 2;
+            OSCSetBPM();
+        }
     }
 
     void Update()
@@ -67,7 +69,10 @@ public class Circular : MonoBehaviour
         message = new OscMessage();
         message.address = "/SetBPM";
         message.values.Add(BPM);
-        osc.Send(message);
+        if (osc != null)
+        {
+            osc.Send(message);
+        }
     }
 
     private void OSCPlayStatus(){
@@ -82,7 +87,10 @@ public class Circular : MonoBehaviour
             message.values.Add(0);
         }
 
-        osc.Send(message);
+        if (osc != null)
+        {
+            osc.Send(message);
+        }
     }
 
 }

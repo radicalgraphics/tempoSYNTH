@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 972.0, 787.0 ],
+		"rect" : [ 34.0, 79.0, 1372.0, 787.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 660.0, 478.0, 119.0, 23.0 ],
+					"patching_rect" : [ 906.0, 505.0, 119.0, 23.0 ],
 					"text" : "read drumLoop.aif"
 				}
 
@@ -243,7 +243,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
-					"patching_rect" : [ 660.0, 517.0, 56.0, 22.0 ],
+					"patching_rect" : [ 906.0, 532.0, 56.0, 22.0 ],
 					"text" : "buffer~ a"
 				}
 
@@ -318,8 +318,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 294.0, 263.0, 137.0, 22.0 ],
-					"text" : "udpsend localhost 6969"
+					"patching_rect" : [ 294.0, 263.0, 135.0, 22.0 ],
+					"text" : "udpsend localhost 3434"
 				}
 
 			}
@@ -504,8 +504,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 56.0, 311.0, 99.0, 22.0 ],
-					"text" : "udpreceive 6161"
+					"patching_rect" : [ 56.0, 311.0, 97.0, 22.0 ],
+					"text" : "udpreceive 7878"
 				}
 
 			}
