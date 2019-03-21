@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SplitOnTrackContact : MonoBehaviour
+public class JointControl : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,10 +18,8 @@ public class SplitOnTrackContact : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Track")
-        {
-            Debug.Log(other.name + "  Need to split");
-            Debug.Log(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
+        if(other.tag == "Track"){
+            Debug.Log("works");
         }
     }
 }

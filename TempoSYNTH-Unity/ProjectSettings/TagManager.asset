@@ -10,6 +10,8 @@ TagManager:
   - Coin
   - TriggerPoint
   - Center
+  - Track
+  - Joint
   layers:
   - Default
   - TransparentFX
