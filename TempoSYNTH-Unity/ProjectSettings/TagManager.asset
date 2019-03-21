@@ -10,8 +10,6 @@ TagManager:
   - Coin
   - TriggerPoint
   - Center
-  - LinearTrack
-  - CircularTrack
   layers:
   - Default
   - TransparentFX

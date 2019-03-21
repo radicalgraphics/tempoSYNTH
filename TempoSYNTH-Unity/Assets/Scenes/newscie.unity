@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 1711220703}
   m_Layer: 0
   m_Name: Mesh
-  m_TagString: LinearTrack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1849,7 +1849,7 @@ GameObject:
   - component: {fileID: 7527374415264595463}
   m_Layer: 0
   m_Name: CircularTrack
-  m_TagString: CircularTrack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
