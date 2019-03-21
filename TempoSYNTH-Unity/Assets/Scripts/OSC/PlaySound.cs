@@ -19,11 +19,10 @@ public class PlaySound : MonoBehaviour
     {
         if (other.tag == "TriggerPoint")
         {
-            Debug.Log("collided");
-
             OscMessage message;
             message = new OscMessage();
             message.address = "/PlaySound";
+            message.values.Add(other.name);
 
             osc.Send(message);
 
