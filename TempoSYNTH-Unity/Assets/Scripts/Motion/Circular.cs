@@ -11,7 +11,7 @@ public class Circular : MonoBehaviour
     public float radius = 2.0f;
     public float radiusSpeed = 0.5f;
     public float BPM = 500.0f;
-    private float rotationSpeed;
+    public float rotationSpeed;
 
 
 

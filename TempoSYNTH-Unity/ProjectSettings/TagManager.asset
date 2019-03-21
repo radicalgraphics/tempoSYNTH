@@ -4,14 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Sphere
   - OSCManager
-  - Magnet
-  - Coin
   - TriggerPoint
   - Center
   - Track
   - Joint
+  - TriggerNote
   layers:
   - Default
   - TransparentFX
