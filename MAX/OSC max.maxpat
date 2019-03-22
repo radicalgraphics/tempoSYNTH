@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 1372.0, 787.0 ],
+		"rect" : [ 34.0, 79.0, 1034.0, 787.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,18 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-117",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 968.0, 544.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-103",
 					"maxclass" : "newobj",
@@ -505,7 +517,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 940.0, 23.0, 103.0, 60.0 ],
+					"patching_rect" : [ 907.0, 23.0, 103.0, 60.0 ],
 					"text" : "Transport Unit\n\nControls the Tempo"
 				}
 
@@ -517,7 +529,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 982.0, 119.0, 61.0, 22.0 ],
+					"patching_rect" : [ 949.0, 119.0, 61.0, 22.0 ],
 					"text" : "tempo $1"
 				}
 
@@ -530,7 +542,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 993.0, 83.0, 50.0, 22.0 ],
+					"patching_rect" : [ 960.0, 83.0, 50.0, 22.0 ],
 					"varname" : "drumpat[1]"
 				}
 
@@ -543,7 +555,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 940.0, 83.0, 24.0, 24.0 ]
+					"patching_rect" : [ 907.0, 83.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -554,7 +566,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 9,
 					"outlettype" : [ "int", "int", "float", "float", "float", "", "int", "float", "" ],
-					"patching_rect" : [ 940.0, 146.0, 103.0, 22.0 ],
+					"patching_rect" : [ 907.0, 146.0, 103.0, 22.0 ],
 					"text" : "transport"
 				}
 
@@ -683,7 +695,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 56.0, 246.0, 135.0, 22.0 ],
+					"patching_rect" : [ 56.0, 263.0, 135.0, 22.0 ],
 					"text" : "udpsend localhost 3434"
 				}
 
@@ -995,6 +1007,13 @@
 					"destination" : [ "obj-109", 0 ],
 					"order" : 1,
 					"source" : [ "obj-113", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-117", 0 ],
+					"source" : [ "obj-113", 1 ]
 				}
 
 			}
