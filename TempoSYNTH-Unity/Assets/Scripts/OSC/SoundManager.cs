@@ -15,24 +15,16 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         InitParse();
-        osc.SetAddressHandler("/isPlaying", ColorOnPlay);
+        //osc.SetAddressHandler("/isPlaying", ColorOnPlay);
     }
 
-    private void ColorOnPlay(OscMessage message)
-    {
-
-        int soundIndex = message.GetInt(0);
-        String location = message.GetInt(1).ToString();
-        string soundKey = null;
-        if(soundIndex == 0){
-            soundKey = "Claves" +","+location.ToString();
-        }
-        if (soundIndex == 1)
-        {
-            soundKey = "Clap" + "," + location.ToString();
-        }
-        notesParse[soundKey].GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-    }
+    //private void ColorOnPlay(OscMessage message)
+    //{
+    //    int soundIndex = message.GetInt(0);
+    //    String location = message.GetInt(1).ToString();
+    //    string soundKey = null;
+    //    notesParse[soundKey].GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+    //}
 
     private void InitParse(){
        
@@ -46,13 +38,15 @@ public class SoundManager : MonoBehaviour
             {
                 notesParse.Add(soundKey, soundObject);
             }
-         }
+            Debug.Log(soundKey);
+        }
 
+       
         foreach (KeyValuePair<string, GameObject> entry in notesParse)
         {
             OscMessage message;
             message = new OscMessage();
-            message.address = "/Init";
+            message.address = "Sound";
             string[] soundKey = entry.Key.ToString().Split(',');
             message.values.Add(soundKey[0]);
             message.values.Add(int.Parse(soundKey[1]));
@@ -73,7 +67,7 @@ public class SoundManager : MonoBehaviour
   
         OscMessage message;
         message = new OscMessage();
-        message.address = "/BPM";
+        message.address = "BPM";
         message.values.Add(BPM);
 
         return message;
@@ -85,7 +79,7 @@ public class SoundManager : MonoBehaviour
 
         OscMessage message;
         message = new OscMessage();
-        message.address = "/State";
+        message.address = "State";
         if (activityState)
         {
             message.values.Add(1);

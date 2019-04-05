@@ -2,15 +2,27 @@ autowatch = 1;
 
 outlets = 4;
 intlets = 2;
-var soundMatrixLength = 16;
-var wei = "hello";
-var soundMatrix = null;
+
 setoutletassist(0,"Tempo Clock On/Off");
 setoutletassist(1,"Tempo Value");
 setoutletassist(2,"Sounds at Position");
 setoutletassist(3,"Matrix Debug");
 
 post("Init");
+
+var soundMatrixLength = 16;
+var wei = "hello";
+var soundMatrix = new Array();
+for (var i = 0; i < soundMatrixLength; i++) {
+	soundMatrix[i] = new Array();
+}
+
+function resetMatrix(){
+	soundMatrix = new Array();
+	for (var i = 0; i < soundMatrixLength; i++) {
+		soundMatrix[i] = new Array();
+	}
+}
 
 function bang() {
   if (wei == "hello") {
@@ -21,7 +33,7 @@ function bang() {
   outlet(0, wei);
 }
 
-function PlaySound(state) {
+function State(state) {
   outlet(0, state);
 }
 
@@ -32,12 +44,6 @@ function BPM(bpmVal) {
 }
 
 function Sound(nam, colum) {
-  if (soundMatrix == null) {
-    soundMatrix = new Array();
-    for (var i = 0; i < soundMatrixLength; i++) {
-      soundMatrix[i] = new Array();
-    }
-  }
   if (soundMatrix[colum].indexOf(nam) == -1) {
     soundMatrix[colum].push(nam);
   }
@@ -47,7 +53,7 @@ function Sound(nam, colum) {
 function PrintColumn(colum) {
   var output = [];
   for (var j = 0; j < soundMatrix[colum].length; j++) {
-    output = output+ " "+ soundMatrix[colum][j];
+    output.push(soundMatrix[colum][j]);
   }
   outlet(2, output);
 }
