@@ -26,8 +26,10 @@ public class SoundManager : MonoBehaviour
     //    notesParse[soundKey].GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     //}
 
-    private void InitParse(){
-       
+    public void InitParse(){
+        resetMax();
+        notesParse = new Dictionary<string, GameObject>();
+
         GameObject[] sounds = GameObject.FindGameObjectsWithTag("TriggerPoint");
         for (int i = 0; i < sounds.Length; i++)
         {
@@ -52,6 +54,13 @@ public class SoundManager : MonoBehaviour
             message.values.Add(int.Parse(soundKey[1]));
             osc.Send(message);
         }
+    }
+
+    private void resetMax(){
+        OscMessage message;
+        message = new OscMessage();
+        message.address = "resetMatrix";
+        osc.Send(message);
     }
 
     private void OnValidate()
