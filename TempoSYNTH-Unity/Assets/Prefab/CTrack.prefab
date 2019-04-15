@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 815183763989872372}
   - component: {fileID: 6532975541244086918}
   - component: {fileID: 6532975541244086917}
+  - component: {fileID: 6532975541244086921}
+  - component: {fileID: 6532975541244086922}
+  - component: {fileID: 6532975541244086923}
   m_Layer: 0
   m_Name: CTrack
   m_TagString: Track
@@ -125,6 +128,102 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: b13535617aa834bc39c525a602e4f68a, type: 3}
+--- !u!114 &6532975541244086921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815183763992125488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffefbea063cab884ca33e5a449e5c22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachmentFlags: 44
+  attachmentOffset: {fileID: 0}
+  catchingSpeedThreshold: -1
+  releaseVelocityStyle: 1
+  releaseVelocityTimeOffset: -0.011
+  scaleReleaseVelocity: 1.1
+  restoreOriginalParent: 1
+  onPickUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDetachFromHand:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  interactable: {fileID: 0}
+--- !u!114 &6532975541244086922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815183763992125488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityAverageFrames: 5
+  angularVelocityAverageFrames: 11
+  estimateOnAwake: 0
+--- !u!114 &6532975541244086923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815183763992125488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateActionSetOnAttach:
+    actionSetPath: 
+  hideHandOnAttach: 1
+  hideSkeletonOnAttach: 0
+  hideControllerOnAttach: 0
+  handAnimationOnPickup: 0
+  setRangeOfMotionOnPickup: -1
+  useHandObjectAttachmentPoint: 1
+  attachEaseIn: 0
+  snapAttachEaseInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  snapAttachEaseInTime: 0.15
+  snapAttachEaseInCompleted: 0
+  skeletonPoser: {fileID: 0}
+  handFollowTransform: 1
+  highlightOnHover: 1
+  hideHighlight: []
 --- !u!1 &5906989829266468063
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +236,7 @@ GameObject:
   - component: {fileID: 5906989829266468059}
   - component: {fileID: 5906989829266468058}
   - component: {fileID: 5906989829266468057}
+  - component: {fileID: 551366947}
   m_Layer: 0
   m_Name: 9
   m_TagString: TrackPosition
@@ -216,6 +316,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &551366947
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989829266468063}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989829493631370
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +344,7 @@ GameObject:
   - component: {fileID: 5906989829493631478}
   - component: {fileID: 5906989829493631477}
   - component: {fileID: 5906989829493631476}
+  - component: {fileID: 491521775}
   m_Layer: 0
   m_Name: 14
   m_TagString: TrackPosition
@@ -307,6 +424,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &491521775
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989829493631370}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989829869300835
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +452,7 @@ GameObject:
   - component: {fileID: 5906989829869300847}
   - component: {fileID: 5906989829869300846}
   - component: {fileID: 5906989829869300845}
+  - component: {fileID: 525848242}
   m_Layer: 0
   m_Name: 10
   m_TagString: TrackPosition
@@ -398,6 +532,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &525848242
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989829869300835}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989829884674052
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +560,7 @@ GameObject:
   - component: {fileID: 5906989829884674048}
   - component: {fileID: 5906989829884674055}
   - component: {fileID: 5906989829884674054}
+  - component: {fileID: 1062107994}
   m_Layer: 0
   m_Name: 6
   m_TagString: TrackPosition
@@ -489,6 +640,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1062107994
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989829884674052}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989830009543865
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +668,7 @@ GameObject:
   - component: {fileID: 5906989830009543845}
   - component: {fileID: 5906989830009543844}
   - component: {fileID: 5906989830009543867}
+  - component: {fileID: 169483313}
   m_Layer: 0
   m_Name: 12
   m_TagString: TrackPosition
@@ -580,6 +748,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &169483313
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989830009543865}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989830010199415
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +776,7 @@ GameObject:
   - component: {fileID: 5906989830010199411}
   - component: {fileID: 5906989830010199410}
   - component: {fileID: 5906989830010199409}
+  - component: {fileID: 1993707139}
   m_Layer: 0
   m_Name: 8
   m_TagString: TrackPosition
@@ -671,6 +856,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1993707139
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989830010199415}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989830089247030
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +884,7 @@ GameObject:
   - component: {fileID: 5906989830089247026}
   - component: {fileID: 5906989830089247025}
   - component: {fileID: 5906989830089247024}
+  - component: {fileID: 1075079399}
   m_Layer: 0
   m_Name: 0
   m_TagString: TrackPosition
@@ -762,6 +964,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1075079399
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989830089247030}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989830138923351
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +992,7 @@ GameObject:
   - component: {fileID: 5906989830138923347}
   - component: {fileID: 5906989830138923346}
   - component: {fileID: 5906989830138923345}
+  - component: {fileID: 311616898}
   m_Layer: 0
   m_Name: 5
   m_TagString: TrackPosition
@@ -853,6 +1072,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &311616898
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989830138923351}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989830206044343
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,6 +1100,7 @@ GameObject:
   - component: {fileID: 5906989830206044339}
   - component: {fileID: 5906989830206044338}
   - component: {fileID: 5906989830206044337}
+  - component: {fileID: 108387836}
   m_Layer: 0
   m_Name: 13
   m_TagString: TrackPosition
@@ -944,6 +1180,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &108387836
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989830206044343}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989830500879815
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,6 +1208,7 @@ GameObject:
   - component: {fileID: 5906989830500879811}
   - component: {fileID: 5906989830500879810}
   - component: {fileID: 5906989830500879809}
+  - component: {fileID: 1182259733}
   m_Layer: 0
   m_Name: 1
   m_TagString: TrackPosition
@@ -1035,6 +1288,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1182259733
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989830500879815}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989830769368076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +1316,7 @@ GameObject:
   - component: {fileID: 5906989830769368072}
   - component: {fileID: 5906989830769368079}
   - component: {fileID: 5906989830769368078}
+  - component: {fileID: 141816254}
   m_Layer: 0
   m_Name: 15
   m_TagString: TrackPosition
@@ -1126,6 +1396,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &141816254
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989830769368076}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989830876990261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1424,7 @@ GameObject:
   - component: {fileID: 5906989830876990257}
   - component: {fileID: 5906989830876990256}
   - component: {fileID: 5906989830876990263}
+  - component: {fileID: 1392974828}
   m_Layer: 0
   m_Name: 11
   m_TagString: TrackPosition
@@ -1217,6 +1504,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1392974828
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989830876990261}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989831027751081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1532,7 @@ GameObject:
   - component: {fileID: 5906989831027751061}
   - component: {fileID: 5906989831027751060}
   - component: {fileID: 5906989831027751083}
+  - component: {fileID: 787957309}
   m_Layer: 0
   m_Name: 4
   m_TagString: TrackPosition
@@ -1308,6 +1612,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &787957309
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989831027751081}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989831215932916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1640,7 @@ GameObject:
   - component: {fileID: 5906989831215932912}
   - component: {fileID: 5906989831215932919}
   - component: {fileID: 5906989831215932918}
+  - component: {fileID: 682429241}
   m_Layer: 0
   m_Name: 3
   m_TagString: TrackPosition
@@ -1399,6 +1720,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &682429241
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989831215932916}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989831239364841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,6 +1748,7 @@ GameObject:
   - component: {fileID: 5906989831239364821}
   - component: {fileID: 5906989831239364820}
   - component: {fileID: 5906989831239364843}
+  - component: {fileID: 639983108}
   m_Layer: 0
   m_Name: 2
   m_TagString: TrackPosition
@@ -1490,6 +1828,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &639983108
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989831239364841}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5906989831351450966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,6 +1856,7 @@ GameObject:
   - component: {fileID: 5906989831351450962}
   - component: {fileID: 5906989831351450961}
   - component: {fileID: 5906989831351450960}
+  - component: {fileID: 42440153}
   m_Layer: 0
   m_Name: 7
   m_TagString: TrackPosition
@@ -1581,3 +1936,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &42440153
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906989831351450966}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
