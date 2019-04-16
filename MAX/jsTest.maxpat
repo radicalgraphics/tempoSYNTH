@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 76.0, 1452.0, 930.0 ],
+		"rect" : [ 1006.0, 2291.0, 490.0, 427.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -245,7 +245,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 451.0, 444.4285888671875, 50.0, 22.0 ],
+					"patching_rect" : [ 443.333343505859375, 448.4285888671875, 50.0, 22.0 ],
 					"text" : "0 Clap"
 				}
 
