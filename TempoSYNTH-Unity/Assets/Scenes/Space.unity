@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 1217346490}
   - component: {fileID: 1217346498}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Clap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,6 +1010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a34f8be83411a4aa23c2ff70bc8f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 1912236997}
+  speed: 0
 --- !u!1 &1260572798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,6 +1820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a34f8be83411a4aa23c2ff70bc8f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 0}
+  speed: 0
 --- !u!1001 &5906989830474164916
 PrefabInstance:
   m_ObjectHideFlags: 0

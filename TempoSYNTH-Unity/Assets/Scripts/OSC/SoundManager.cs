@@ -63,6 +63,15 @@ public class SoundManager : MonoBehaviour
         osc.Send(message);
     }
 
+    public void addSound(string name,int loc) {
+        OscMessage message;
+        message = new OscMessage();
+        message.address = "Sound";
+        message.values.Add(name);
+        message.values.Add(loc);
+        osc.Send(message);
+    }
+
     private void OnValidate()
     {
         if (Application.isPlaying & osc != null)
