@@ -43,9 +43,17 @@ function BPM(bpmVal) {
   }
 }
 
-function Sound(nam, colum) {
+function AddSound(nam, colum) {
   if (soundMatrix[colum].indexOf(nam) == -1) {
     soundMatrix[colum].push(nam);
+  }
+  outlet(3, nam + " at " + colum);
+}
+
+function RemoveSound(nam, colum) {
+	var loc = soundMatrix[colum].indexOf(nam);
+  if (loc != -1) {
+    soundMatrix[colum].splice(loc,1);
   }
   outlet(3, nam + " at " + colum);
 }

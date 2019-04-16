@@ -8,6 +8,9 @@ TagManager:
   - TriggerPoint
   - Track
   - TrackPosition
+  - projectile
+  - FxTemporaire
+  - SoundManager
   layers:
   - Default
   - TransparentFX

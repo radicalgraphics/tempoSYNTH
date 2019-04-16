@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1006.0, 2291.0, 490.0, 427.0 ],
+		"rect" : [ 948.0, 82.0, 671.0, 923.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,18 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 451.0, 268.0, 126.0, 22.0 ],
+					"text" : "RemoveSound Clap 7"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-90",
 					"maxclass" : "newobj",
@@ -199,8 +211,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 451.0, 195.642822265625, 81.0, 22.0 ],
-					"text" : "Sound Clap 7"
+					"patching_rect" : [ 451.0, 195.642822265625, 103.0, 22.0 ],
+					"text" : "AddSound Clap 7"
 				}
 
 			}
@@ -429,7 +441,7 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 291.0, 322.0, 228.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"filename" : "commandParser",
+						"filename" : "commandParser.js",
 						"parameter_enable" : 0
 					}
 ,
@@ -673,6 +685,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-77", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}

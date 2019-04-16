@@ -8,14 +8,15 @@ public class SoundManager : MonoBehaviour
 {
     public OSC osc;
     public bool activityState = false;
-    public int BPM = 100;
+    public int BPM = 140;
     Dictionary<string, GameObject> notesParse = new Dictionary<string, GameObject>();
-   
+
     // Start is called before the first frame update
     void Start()
     {
         InitParse();
-        //osc.SetAddressHandler("/isPlaying", ColorOnPlay);
+        UpdateState(true);
+        UpdateBPM(BPM);
     }
 
     //private void ColorOnPlay(OscMessage message)
@@ -26,16 +27,17 @@ public class SoundManager : MonoBehaviour
     //    notesParse[soundKey].GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     //}
 
-    public void InitParse(){
+    public void InitParse()
+    {
         resetMax();
         notesParse = new Dictionary<string, GameObject>();
 
         GameObject[] sounds = GameObject.FindGameObjectsWithTag("TriggerPoint");
         for (int i = 0; i < sounds.Length; i++)
         {
-            string soundKey = sounds[i].transform.name+","+ sounds[i].transform.parent.name;
+            string soundKey = sounds[i].transform.name + "," + sounds[i].transform.parent.name;
             GameObject soundObject = sounds[i];
-             
+
             if (!notesParse.ContainsKey(soundKey))
             {
                 notesParse.Add(soundKey, soundObject);
@@ -43,12 +45,12 @@ public class SoundManager : MonoBehaviour
             Debug.Log(soundKey);
         }
 
-       
+
         foreach (KeyValuePair<string, GameObject> entry in notesParse)
         {
             OscMessage message;
             message = new OscMessage();
-            message.address = "Sound";
+            message.address = "AddSound";
             string[] soundKey = entry.Key.ToString().Split(',');
             message.values.Add(soundKey[0]);
             message.values.Add(int.Parse(soundKey[1]));
@@ -56,62 +58,64 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void resetMax(){
+    private void resetMax()
+    {
         OscMessage message;
         message = new OscMessage();
         message.address = "resetMatrix";
         osc.Send(message);
     }
 
-    public void addSound(string name,int loc) {
+    public void addSound(string name, int loc)
+    {
         OscMessage message;
         message = new OscMessage();
-        message.address = "Sound";
+        message.address = "AddSound";
         message.values.Add(name);
         message.values.Add(loc);
         osc.Send(message);
     }
 
-    private void OnValidate()
+    public void removeSound(string name, int loc)
     {
-        if (Application.isPlaying & osc != null)
-        {
-            osc.Send(UpdateBPM());
-            osc.Send(UpdateState());
-        }
+        OscMessage message;
+        message = new OscMessage();
+        message.address = "RemoveSound";
+        message.values.Add(name);
+        message.values.Add(loc);
+        osc.Send(message);
     }
 
-    private OscMessage UpdateBPM(){
-  
+    public void UpdateBPM(int newBPM)
+    {
+        BPM = newBPM;
         OscMessage message;
         message = new OscMessage();
         message.address = "BPM";
-        message.values.Add(BPM);
-
-        return message;
-    
+        message.values.Add(newBPM);
+        osc.Send(message);
     }
 
-    private OscMessage UpdateState()
+    public void UpdateState(bool newState)
     {
-
+        activityState = newState;
         OscMessage message;
         message = new OscMessage();
         message.address = "State";
-        if (activityState)
+        if (newState)
         {
             message.values.Add(1);
         }
-        else{
+        else
+        {
             message.values.Add(0);
         }
-        
-        return message;
 
+        osc.Send(message);
     }
 
-
-    void onDestroy(){
-
+    private void OnApplicationQuit()
+    {
+        UpdateState(false);
     }
 }

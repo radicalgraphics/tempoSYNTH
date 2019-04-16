@@ -1,20 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class attachToTrack : MonoBehaviour
 {
     private Transform lastPoint;
-
-    public SoundManager sound;
+    public GameObject statusDisp;
+    private string status;
+    private SoundManager sound;
     public float speed;
     
     // Start is called before the first frame update
     void Start()
     {
-        if (this.transform.parent != null && this.transform.parent.tag.Equals("TrackPosition")) {
-            lastPoint = this.transform;
-        }
+        sound = FindObjectOfType<SoundManager>();
+        status = this.name + "\n";
+        statusDisp.GetComponent<Text>().text = status;
     }
 
     // Update is called once per frame
@@ -23,11 +25,13 @@ public class attachToTrack : MonoBehaviour
         if (lastPoint != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, lastPoint.position, speed * Time.deltaTime);
-            if (Mathf.Abs(this.transform.position.x - lastPoint.position.x) < 0.05)
+            if (Mathf.Abs(this.transform.position.x - lastPoint.position.x) < 0.01)
             {
                 this.transform.SetParent(lastPoint);
-                lastPoint = null;
                 sound.addSound(this.name, int.Parse(lastPoint.name));
+                status = this.name + "\n" + this.transform.parent.name;
+                statusDisp.GetComponent<Text>().text = status;
+                lastPoint = null;
             }
         }
     }
@@ -44,7 +48,11 @@ public class attachToTrack : MonoBehaviour
     {
         if (other.tag == "TrackPosition")
         {
-            lastPoint = null;
+           
+            sound.removeSound(this.name, int.Parse(other.name));
+            this.transform.SetParent(null);
+            status = this.name + "\n" + this.transform.parent.name;
+            statusDisp.GetComponent<Text>().text = status;
             Debug.Log("out");
         }
 
