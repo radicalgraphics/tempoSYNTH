@@ -89,6 +89,22 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean menuToggle
+        {
+            get
+            {
+                return SteamVR_Actions.default_menuToggle;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean maxClock
+        {
+            get
+            {
+                return SteamVR_Actions.default_maxClock;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get

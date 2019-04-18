@@ -41,6 +41,14 @@
       "requirement": "optional"
     },
     {
+      "name": "/actions/default/in/menuToggle",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/maxClock",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

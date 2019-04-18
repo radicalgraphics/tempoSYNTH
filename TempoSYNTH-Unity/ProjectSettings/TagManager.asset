@@ -4,13 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - OSCManager
   - TriggerPoint
   - Track
   - TrackPosition
   - projectile
   - FxTemporaire
   - SoundManager
+  - ControllerMenu
   layers:
   - Default
   - TransparentFX

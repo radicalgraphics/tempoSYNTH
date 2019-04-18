@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
-    public OSC osc;
+    private OSC osc;
     public bool activityState = false;
     public int BPM = 140;
     Dictionary<string, GameObject> notesParse = new Dictionary<string, GameObject>();
@@ -14,18 +14,30 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        osc = GetComponent<OSC>();
         InitParse();
         UpdateState(true);
         UpdateBPM(BPM);
+        //osc.SetAddressHandler("/metro", ColorOnPlay);
     }
 
-    //private void ColorOnPlay(OscMessage message)
-    //{
-    //    int soundIndex = message.GetInt(0);
-    //    String location = message.GetInt(1).ToString();
-    //    string soundKey = null;
-    //    notesParse[soundKey].GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-    //}
+    private void ColorOnPlay(OscMessage message)
+    {
+        Debug.Log("hi");
+        GameObject[] higlights = GameObject.FindGameObjectsWithTag("TrackPosition");
+        for (int i = 0; i < higlights.Length; i++) {
+            Debug.Log(higlights[i].name);
+            Debug.Log(message.GetInt(0).ToString());
+            if (higlights[i].name == message.GetInt(0).ToString())
+            {
+                higlights[i].GetComponent<MeshRenderer>().enabled = true;
+                Debug.Log("match");
+            }
+            else {
+                higlights[i].GetComponent<MeshRenderer>().enabled = false;
+            }
+        }
+    }
 
     public void InitParse()
     {
@@ -105,10 +117,12 @@ public class SoundManager : MonoBehaviour
         if (newState)
         {
             message.values.Add(1);
+            GetComponentInChildren<Light>().enabled = true;
         }
         else
         {
             message.values.Add(0);
+            GetComponentInChildren<Light>().enabled = false;
         }
 
         osc.Send(message);
@@ -118,4 +132,5 @@ public class SoundManager : MonoBehaviour
     {
         UpdateState(false);
     }
+
 }

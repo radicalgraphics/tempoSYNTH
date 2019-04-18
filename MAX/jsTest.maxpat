@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 948.0, 82.0, 671.0, 923.0 ],
+		"rect" : [ 975.0, 2236.0, 628.0, 570.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,29 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-228",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 89.0, 373.78570556640625, 135.0, 22.0 ],
+					"text" : "udpsend localhost 6969"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-229",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 89.0, 338.0, 59.0, 22.0 ],
+					"text" : "/metro $1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-8",
 					"maxclass" : "message",
@@ -320,7 +343,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 132.0, 225.9285888671875, 50.0, 22.0 ]
+					"patching_rect" : [ 127.0, 253.9285888671875, 50.0, 22.0 ]
 				}
 
 			}
@@ -441,7 +464,7 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 291.0, 322.0, 228.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"filename" : "commandParser.js",
+						"filename" : "commandParser",
 						"parameter_enable" : 0
 					}
 ,
@@ -525,6 +548,20 @@
 					"destination" : [ "obj-31", 0 ],
 					"order" : 0,
 					"source" : [ "obj-2", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-229", 0 ],
+					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-228", 0 ],
+					"source" : [ "obj-229", 0 ]
 				}
 
 			}
