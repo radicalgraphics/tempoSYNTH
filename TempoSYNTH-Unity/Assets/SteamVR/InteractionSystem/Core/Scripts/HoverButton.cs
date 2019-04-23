@@ -53,32 +53,36 @@ namespace Valve.VR.InteractionSystem
 
         private void HandHoverUpdate(Hand hand)
         {
-            hovering = true;
-            lastHoveredHand = hand;
-
-            bool wasEngaged = engaged;
-
-            float currentDistance = Vector3.Distance(movingPart.parent.InverseTransformPoint(hand.transform.position), endPosition);
-            float enteredDistance = Vector3.Distance(handEnteredPosition, endPosition);
-
-            if (currentDistance > enteredDistance)
+            bool curstate = SteamVR_Input.GetState("GrabPinch", SteamVR_Input_Sources.Any);
+            if (curstate)
             {
-                enteredDistance = currentDistance;
-                handEnteredPosition = movingPart.parent.InverseTransformPoint(hand.transform.position);
+                hovering = true;
+                lastHoveredHand = hand;
+
+                bool wasEngaged = engaged;
+
+                float currentDistance = Vector3.Distance(movingPart.parent.InverseTransformPoint(hand.transform.position), endPosition);
+                float enteredDistance = Vector3.Distance(handEnteredPosition, endPosition);
+
+                if (currentDistance > enteredDistance)
+                {
+                    enteredDistance = currentDistance;
+                    handEnteredPosition = movingPart.parent.InverseTransformPoint(hand.transform.position);
+                }
+
+                float distanceDifference = enteredDistance - currentDistance;
+
+                float lerp = Mathf.InverseLerp(0, localMoveDistance.magnitude, distanceDifference);
+
+                if (lerp > engageAtPercent)
+                    engaged = true;
+                else if (lerp < disengageAtPercent)
+                    engaged = false;
+
+                movingPart.localPosition = Vector3.Lerp(startPosition, endPosition, lerp);
+
+                InvokeEvents(wasEngaged, engaged);
             }
-
-            float distanceDifference = enteredDistance - currentDistance;
-
-            float lerp = Mathf.InverseLerp(0, localMoveDistance.magnitude, distanceDifference);
-
-            if (lerp > engageAtPercent)
-                engaged = true;
-            else if (lerp < disengageAtPercent)
-                engaged = false;
-
-            movingPart.localPosition = Vector3.Lerp(startPosition, endPosition, lerp);
-
-            InvokeEvents(wasEngaged, engaged);
         }
 
         private void LateUpdate()

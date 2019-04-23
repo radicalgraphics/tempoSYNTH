@@ -18,20 +18,16 @@ public class SoundManager : MonoBehaviour
         InitParse();
         UpdateState(true);
         UpdateBPM(BPM);
-        //osc.SetAddressHandler("/metro", ColorOnPlay);
+        osc.SetAddressHandler("/metro", ColorOnPlay);
     }
 
     private void ColorOnPlay(OscMessage message)
     {
-        Debug.Log("hi");
         GameObject[] higlights = GameObject.FindGameObjectsWithTag("TrackPosition");
         for (int i = 0; i < higlights.Length; i++) {
-            Debug.Log(higlights[i].name);
-            Debug.Log(message.GetInt(0).ToString());
             if (higlights[i].name == message.GetInt(0).ToString())
             {
                 higlights[i].GetComponent<MeshRenderer>().enabled = true;
-                Debug.Log("match");
             }
             else {
                 higlights[i].GetComponent<MeshRenderer>().enabled = false;
@@ -44,17 +40,23 @@ public class SoundManager : MonoBehaviour
         resetMax();
         notesParse = new Dictionary<string, GameObject>();
 
-        GameObject[] sounds = GameObject.FindGameObjectsWithTag("TriggerPoint");
+        GameObject[] sounds = GameObject.FindGameObjectsWithTag("SoundCube");
         for (int i = 0; i < sounds.Length; i++)
         {
-            string soundKey = sounds[i].transform.name + "," + sounds[i].transform.parent.name;
-            GameObject soundObject = sounds[i];
-
-            if (!notesParse.ContainsKey(soundKey))
+            if (sounds[i].transform.parent != null)
             {
-                notesParse.Add(soundKey, soundObject);
+                if (sounds[i].transform.parent.CompareTag("TrackPosition"))
+                {
+                    string soundKey = sounds[i].transform.name + "," + sounds[i].transform.parent.name;
+                    GameObject soundObject = sounds[i];
+
+                    if (!notesParse.ContainsKey(soundKey))
+                    {
+                        notesParse.Add(soundKey, soundObject);
+                    }
+                    Debug.Log(soundKey);
+                }
             }
-            Debug.Log(soundKey);
         }
 
 

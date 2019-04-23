@@ -13,7 +13,7 @@ public class BPMUI : MonoBehaviour
     private TextMesh valueDisp;
     public int minBPM = 60;
     public int maxBPM = 220;
-
+    private Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags & (~Hand.AttachmentFlags.SnapOnAttach) & (~Hand.AttachmentFlags.DetachOthers) & (~Hand.AttachmentFlags.VelocityMovement);
     private SoundManager sm;
 
     void Start()
@@ -24,11 +24,13 @@ public class BPMUI : MonoBehaviour
         sm.BPM = valueToBPM(lm.value);
         valueDisp.text = "BPM: "+String.Format("{0:000}",sm.BPM.ToString());
     }
+    private void HandHoverUpdate(Hand hand) {
+        valueDisp.transform.rotation = Camera.main.transform.rotation;
+    }
 
     // Update is called once per frame
     void Update()
     {
-
         bool curstate = SteamVR_Input.GetState("GrabPinch", SteamVR_Input_Sources.Any);
 
         if (curstate)
@@ -41,7 +43,7 @@ public class BPMUI : MonoBehaviour
     }
 
     int valueToBPM(float x) {
-        int y = (int)(Math.Round(x, 2) * (maxBPM - minBPM) + minBPM);
+        int y = (int)(Math.Round(x, 3) * (maxBPM - minBPM) + minBPM);
         return y;
     }
 

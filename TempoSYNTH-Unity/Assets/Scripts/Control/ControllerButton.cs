@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class ControllerButton : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ControllerButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Teleport.instance.CancelTeleportHint();
         controllerMenu = GameObject.FindGameObjectWithTag("ControllerMenu");
         menuVis = controllerMenu.active;
         sm = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();

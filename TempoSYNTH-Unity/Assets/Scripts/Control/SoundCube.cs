@@ -6,28 +6,32 @@ using Valve.VR.InteractionSystem;
 
 public class SoundCube : MonoBehaviour
 {
-    private TextMesh generalText;
-    private TextMesh hoveringText;
-    private Vector3 oldPosition;
-    private Quaternion oldRotation;
-
-    private float attachTime;
-
+    private TextMesh locationUI;
+    private TextMesh nameUI;
     private Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags & (~Hand.AttachmentFlags.SnapOnAttach) & (~Hand.AttachmentFlags.DetachOthers) & (~Hand.AttachmentFlags.VelocityMovement);
-
     private Interactable interactable;
+
+    private SoundManager sound;
+
 
     //-------------------------------------------------
     void Awake()
     {
         var textMeshs = GetComponentsInChildren<TextMesh>();
-        generalText = textMeshs[0];
-        hoveringText = textMeshs[1];
-
-        generalText.text = "No Hand Hovering";
-        hoveringText.text = "Hovering: False";
+        locationUI = textMeshs[0];
+        nameUI = textMeshs[1];
 
         interactable = this.GetComponent<Interactable>();
+        sound = FindObjectOfType<SoundManager>();
+    }
+
+    private void Start()
+    {
+        locationUI.text = "";
+        nameUI.text = this.name;
+
+        locationUI.transform.rotation = Camera.main.transform.rotation;
+        nameUI.transform.rotation = Camera.main.transform.rotation;
     }
 
 
@@ -36,7 +40,6 @@ public class SoundCube : MonoBehaviour
     //-------------------------------------------------
     private void OnHandHoverBegin(Hand hand)
     {
-        generalText.text = "Hovering hand: " + hand.name;
     }
 
 
@@ -45,7 +48,6 @@ public class SoundCube : MonoBehaviour
     //-------------------------------------------------
     private void OnHandHoverEnd(Hand hand)
     {
-        generalText.text = "No Hand Hovering";
     }
 
 
@@ -59,10 +61,6 @@ public class SoundCube : MonoBehaviour
 
         if (interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
         {
-            // Save our position/rotation so that we can restore it when we detach
-            oldPosition = transform.position;
-            oldRotation = transform.rotation;
-
             // Call this to continue receiving HandHoverUpdate messages,
             // and prevent the hand from hovering over anything else
             hand.HoverLock(interactable);
@@ -77,23 +75,20 @@ public class SoundCube : MonoBehaviour
 
             // Call this to undo HoverLock
             hand.HoverUnlock(interactable);
-
-            // Restore position/rotation
-            //transform.position = oldPosition;
-            //transform.rotation = oldRotation;
         }
+
+        locationUI.transform.rotation = Camera.main.transform.rotation;
+        nameUI.transform.rotation = Camera.main.transform.rotation;
     }
 
-
+    private bool attached;
     //-------------------------------------------------
     // Called when this GameObject becomes attached to the hand
     //-------------------------------------------------
     private void OnAttachedToHand(Hand hand)
     {
-        generalText.text = string.Format("Attached: {0}", hand.name);
-        attachTime = Time.time;
+        attached = true;
     }
-
 
 
     //-------------------------------------------------
@@ -101,26 +96,83 @@ public class SoundCube : MonoBehaviour
     //-------------------------------------------------
     private void OnDetachedFromHand(Hand hand)
     {
-        generalText.text = string.Format("Detached: {0}", hand.name);
+        attached = false;
+        if (lastPoint != null && Vector3.Distance(transform.position, lastPoint.position) > 0.01f)
+        {
+            StartCoroutine(SnapToPos());
+        }
     }
 
+    private IEnumerator SnapToPos()
+    {
+            Vector3 initialScale = this.transform.position;
+            Vector3 targetScale = lastPoint.transform.position;
 
+            Quaternion initialRot = this.transform.rotation;
+            Quaternion targetrot = Quaternion.LookRotation(lastPoint.parent.transform.position - transform.position);
+
+        float startTime = Time.time;
+            float overTime = 0.3f;
+            float endTime = startTime + overTime;
+
+            while (Time.time < endTime)
+            {
+                this.transform.position = Vector3.Slerp(initialScale, targetScale, (Time.time - startTime) / overTime);
+                this.transform.rotation = Quaternion.Slerp(initialRot, targetrot, (Time.time - startTime) / overTime);
+
+            if (Vector3.Distance(transform.position, lastPoint.position) < 0.01f)
+            {
+                this.transform.SetParent(lastPoint);
+                sound.addSound(this.name, int.Parse(lastPoint.name));
+            }
+
+            yield return null;
+        }
+    }
     //-------------------------------------------------
     // Called every Update() while this GameObject is attached to the hand
     //-------------------------------------------------
     private void HandAttachedUpdate(Hand hand)
     {
-        generalText.text = string.Format("Attached: {0} :: Time: {1:F2}", hand.name, (Time.time - attachTime));
+    }
+
+    private Transform lastPoint;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "TrackPosition")
+        {
+            if (attached)
+            {
+                locationUI.text = other.name;
+                lastPoint = other.transform;
+
+            }
+        }
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "TrackPosition")
+        {
+            if (attached)
+            {
+                //sound.removeSound(this.name, int.Parse(other.name));
+                //this.transform.SetParent(null);
+                locationUI.text = null;
+                sound.removeSound(this.name, int.Parse(lastPoint.name));
+                
+                lastPoint = null;
+                this.transform.SetParent(null);
+            }
+        }
     }
 
     private bool lastHovering = false;
     private void Update()
     {
-        if (interactable.isHovering != lastHovering) //save on the .tostrings a bit
-        {
-            hoveringText.text = string.Format("Hovering: {0}", interactable.isHovering);
-            lastHovering = interactable.isHovering;
-        }
+
     }
 
 

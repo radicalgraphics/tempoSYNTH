@@ -25,7 +25,7 @@ public class attachToTrack : MonoBehaviour
         if (lastPoint != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, lastPoint.position, speed * Time.deltaTime);
-            if (Mathf.Abs(this.transform.position.x - lastPoint.position.x) < 0.01)
+            if (Mathf.Abs(this.transform.position.x - lastPoint.position.x) < 0.3)
             {
                 this.transform.SetParent(lastPoint);
                 sound.addSound(this.name, int.Parse(lastPoint.name));
@@ -48,7 +48,6 @@ public class attachToTrack : MonoBehaviour
     {
         if (other.tag == "TrackPosition")
         {
-           
             sound.removeSound(this.name, int.Parse(other.name));
             this.transform.SetParent(null);
             status = this.name + "\n" + this.transform.parent.name;
