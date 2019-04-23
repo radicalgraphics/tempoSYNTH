@@ -12,10 +12,13 @@ namespace Valve.VR.InteractionSystem.Sample
         public string name;
         public bool randomColor = false;
         public float[] colorCode = { 0, 1, 0, 1, 0, 1, 0, 1 };
+         public TextMesh valueDisp;
 
         private void Start()
         {
             hoverButton.onButtonDown.AddListener(OnButtonDown);
+            valueDisp = this.transform.parent.GetComponentInChildren<TextMesh>();
+            valueDisp.text = name;
         }
 
         private void OnButtonDown(Hand hand)

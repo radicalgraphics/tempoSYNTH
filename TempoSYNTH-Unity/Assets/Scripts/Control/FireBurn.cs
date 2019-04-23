@@ -43,21 +43,31 @@ public class FireBurn : MonoBehaviour
         Vector3 targetScale = Vector3.one * 0.01f;
 
         float startTime = Time.time;
-        float overTime = 2f;
+        float overTime = 1f;
         float endTime = startTime + overTime;
 
-        while (Time.time < endTime)
+
+       
+        while (Time.time <= endTime)
         {
             if (toBurn != null)
             {
                 toBurn.transform.localScale = Vector3.Slerp(initialScale, targetScale, (Time.time - startTime) / overTime);
+
             }
             yield return null;
         }
-
         Destroy(toBurn);
-
-
+        yield return new WaitForSeconds(1);
+        sound.InitParse();
+        //StartCoroutine(CheckSound());
     }
+
+    //private IEnumerator CheckSound() {
+        
+    //    sound.InitParse();
+    //}
+
 }
+
 

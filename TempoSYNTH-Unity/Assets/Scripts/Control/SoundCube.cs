@@ -101,6 +101,9 @@ public class SoundCube : MonoBehaviour
         {
             StartCoroutine(SnapToPos());
         }
+        if (lastPoint == null) {
+            transform.parent = null;
+        }
     }
 
     private IEnumerator SnapToPos()
@@ -159,12 +162,11 @@ public class SoundCube : MonoBehaviour
             if (attached)
             {
                 //sound.removeSound(this.name, int.Parse(other.name));
-                //this.transform.SetParent(null);
                 locationUI.text = null;
                 sound.removeSound(this.name, int.Parse(lastPoint.name));
                 
                 lastPoint = null;
-                this.transform.SetParent(null);
+                
             }
         }
     }
