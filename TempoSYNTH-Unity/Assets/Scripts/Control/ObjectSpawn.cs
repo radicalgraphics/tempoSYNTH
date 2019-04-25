@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class ObjectSpawn : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class ObjectSpawn : MonoBehaviour
     public GameObject current;
     public float size = 1.0f;
     public string soundName;
+    private SoundManager sound;
+    private Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags & (~Hand.AttachmentFlags.SnapOnAttach) & (~Hand.AttachmentFlags.DetachOthers) & (~Hand.AttachmentFlags.VelocityMovement);
 
     public bool randomColor = false;
     public float[] colorCode = { 0, 1, 0, 1, 0, 1, 0, 1 };
@@ -15,21 +19,36 @@ public class ObjectSpawn : MonoBehaviour
     private void Start()
     {
         current = this.transform.GetChild(0).gameObject;
+        sound = FindObjectOfType<SoundManager>();
     }
+
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject == current)
         {
-            StopAllCoroutines();
-            StartCoroutine(CopyTarget());
+                StopAllCoroutines();
+                StartCoroutine(CopyTarget());
+            
         }
+    }
+    private void OnHandHoverBegin(Hand hand)
+    {
+
+        sound.PreviewSound(soundName, 1);
+    }
+
+    private void OnHandHoverEnd(Hand hand) { 
+    
+            sound.PreviewSound(soundName, 0);
+        
     }
 
     private IEnumerator CopyTarget()
     {
         GameObject planting = GameObject.Instantiate<GameObject>(prefab);
         current = planting;
+        current.transform.SetParent(this.transform);
         planting.transform.position = this.transform.position;
         planting.transform.rotation = this.transform.rotation;
 
@@ -39,18 +58,6 @@ public class ObjectSpawn : MonoBehaviour
             planting.GetComponent<Renderer>().material.color = newColor;
         }
         planting.name = soundName;
-        
-        Vector3 initialScale = Vector3.one * 0.01f;
-        Vector3 targetScale = Vector3.one * size;
-
-        float startTime = Time.time;
-        float overTime = 0.5f;
-        float endTime = startTime + overTime;
-
-        while (Time.time < endTime)
-        {
-            planting.transform.localScale = Vector3.Slerp(initialScale, targetScale, (Time.time - startTime) / overTime);
-            yield return null;
-        }
+        yield return null;
     }
 }

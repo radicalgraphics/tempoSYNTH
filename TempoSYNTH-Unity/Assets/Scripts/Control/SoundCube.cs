@@ -50,6 +50,7 @@ public class SoundCube : MonoBehaviour
     //-------------------------------------------------
     private void OnHandHoverEnd(Hand hand)
     {
+
     }
 
 
