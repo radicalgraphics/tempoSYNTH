@@ -12,7 +12,7 @@ public class SoundCube : MonoBehaviour
     private Interactable interactable;
 
     private SoundManager sound;
-
+    public string SoundName;
 
     //-------------------------------------------------
     void Awake()
@@ -27,6 +27,7 @@ public class SoundCube : MonoBehaviour
 
     private void Start()
     {
+        this.name = SoundName;
         locationUI.text = "";
         nameUI.text = this.name;
 
@@ -40,6 +41,7 @@ public class SoundCube : MonoBehaviour
     //-------------------------------------------------
     private void OnHandHoverBegin(Hand hand)
     {
+
     }
 
 

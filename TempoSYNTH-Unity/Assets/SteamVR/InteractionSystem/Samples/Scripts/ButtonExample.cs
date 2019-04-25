@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Valve.VR.InteractionSystem;
 
-namespace Valve.VR.InteractionSystem.Sample
-{
-    public class ButtonExample : MonoBehaviour
+public class ButtonExample : MonoBehaviour
     {
         public HoverButton hoverButton;
 
@@ -12,7 +11,9 @@ namespace Valve.VR.InteractionSystem.Sample
         public string name;
         public bool randomColor = false;
         public float[] colorCode = { 0, 1, 0, 1, 0, 1, 0, 1 };
-         public TextMesh valueDisp;
+        public TextMesh valueDisp;
+
+       
 
         private void Start()
         {
@@ -24,6 +25,23 @@ namespace Valve.VR.InteractionSystem.Sample
         private void OnButtonDown(Hand hand)
         {
                 StartCoroutine(DoPlant());
+        }
+
+        //-------------------------------------------------
+        // Called when a Hand starts hovering over this object
+        //-------------------------------------------------
+        private void OnHandHoverBegin(Hand hand)
+        {
+
+        }
+
+
+        //-------------------------------------------------
+        // Called when a Hand stops hovering over this object
+        //-------------------------------------------------
+        private void OnHandHoverEnd(Hand hand)
+        {
+
         }
 
         private IEnumerator DoPlant()
@@ -51,5 +69,5 @@ namespace Valve.VR.InteractionSystem.Sample
                 yield return null;
             }
         }
-    }
+    
 }

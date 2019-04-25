@@ -110,6 +110,15 @@ public class SoundManager : MonoBehaviour
         osc.Send(message);
     }
 
+    public void PreviewSound(string name,  int state) {
+        OscMessage message;
+        message = new OscMessage();
+        message.address = "PreviewSound";
+        message.values.Add(name);
+        message.values.Add(state);
+        osc.Send(message);
+    }
+
     public void UpdateState(bool newState)
     {
         activityState = newState;
