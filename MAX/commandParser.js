@@ -1,12 +1,16 @@
 autowatch = 1;
 
-outlets = 4;
+outlets = 7;
 intlets = 2;
 
 setoutletassist(0,"Tempo Clock On/Off");
 setoutletassist(1,"Tempo Value");
 setoutletassist(2,"Sounds at Position");
 setoutletassist(3,"Matrix Debug");
+setoutletassist(4,"PreViewSound");
+setoutletassist(5,"Init");
+setoutletassist(6,"Volume Port");
+
 
 post("Init");
 
@@ -17,11 +21,17 @@ for (var i = 0; i < soundMatrixLength; i++) {
 	soundMatrix[i] = new Array();
 }
 
+
+function UpdateVolume(nam, state){
+	outlet(6, [nam, state]);
+}
+
 function resetMatrix(){
 	soundMatrix = new Array();
 	for (var i = 0; i < soundMatrixLength; i++) {
 		soundMatrix[i] = new Array();
 	}
+	outlet(5,1);
 }
 
 function bang() {
@@ -56,6 +66,10 @@ function RemoveSound(nam, colum) {
     soundMatrix[colum].splice(loc,1);
   }
   outlet(3, nam + " at " + colum);
+}
+
+function PreviewSound(nam, state){
+	outlet(4,[nam, state]);
 }
 
 function PrintColumn(colum) {
