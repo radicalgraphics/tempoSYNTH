@@ -1871,26 +1871,6 @@ Transform:
   m_Father: {fileID: 1586966462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &650858911 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7856134876747476341, guid: a74c26bd8385fbf42a761203de437d2b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1103566894}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &650858914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 650858911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75f8b8f6f230fd345be0a362694704e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minBPM: 0
-  maxBPM: 100
 --- !u!1 &653211351
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,78 +2649,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1431407328388789142, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_FontSize
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825304724578355639, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_Name
-      value: VolumeControl
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825304724578355639, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825304723891009311, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825304723456999674, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4009513705906202732, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4009513705906202732, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4009513705906202732, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4009513705906202732, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0537
-      objectReference: {fileID: 0}
-    - target: {fileID: 4009513705906202732, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7856134876747476341, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_Name
-      value: VolumeUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365676559893118286, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Volume: ???'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3838428996766880644, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: minBPM
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3838428996766880644, guid: a74c26bd8385fbf42a761203de437d2b,
-        type: 3}
-      propertyPath: maxBPM
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3838428996766880644, guid: a74c26bd8385fbf42a761203de437d2b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a74c26bd8385fbf42a761203de437d2b, type: 3}
 --- !u!1 &1124318263
 GameObject:
