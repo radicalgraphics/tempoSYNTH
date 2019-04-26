@@ -10,7 +10,7 @@ public class ObjectSpawn : MonoBehaviour
     public GameObject current;
     public float size = 1.0f;
     public string soundName;
-    private SoundManager sound;
+
     private Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags & (~Hand.AttachmentFlags.SnapOnAttach) & (~Hand.AttachmentFlags.DetachOthers) & (~Hand.AttachmentFlags.VelocityMovement);
 
     public bool randomColor = false;
@@ -18,8 +18,7 @@ public class ObjectSpawn : MonoBehaviour
 
     private void Start()
     {
-        current = this.transform.GetChild(0).gameObject;
-        sound = FindObjectOfType<SoundManager>();
+        StartCoroutine(CopyTarget());
     }
 
 
@@ -29,20 +28,9 @@ public class ObjectSpawn : MonoBehaviour
         {
                 StopAllCoroutines();
                 StartCoroutine(CopyTarget());
-            
         }
     }
-    private void OnHandHoverBegin(Hand hand)
-    {
 
-        sound.PreviewSound(soundName, 1);
-    }
-
-    private void OnHandHoverEnd(Hand hand) { 
-    
-            sound.PreviewSound(soundName, 0);
-        
-    }
 
     private IEnumerator CopyTarget()
     {

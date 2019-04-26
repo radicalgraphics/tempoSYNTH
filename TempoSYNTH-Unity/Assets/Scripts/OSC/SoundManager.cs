@@ -6,19 +6,36 @@ using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
-    private OSC osc;
+    public OSC osc;
     public bool activityState = false;
     public int BPM = 140;
     Dictionary<string, GameObject> notesParse = new Dictionary<string, GameObject>();
+    public List<string> fileName;
+    public ButtonExample[] soundResCues;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        osc = GetComponent<OSC>();
+        osc = this.GetComponent<OSC>();
+        osc.SetAddressHandler("/metro", ColorOnPlay);
+        osc.SetAddressHandler("/file", FileOnLoad);
+        soundResCues = GameObject.FindGameObjectWithTag("SoundSpawnController").GetComponentsInChildren<ButtonExample>();
         InitParse();
         UpdateState(true);
         UpdateBPM(BPM);
-        osc.SetAddressHandler("/metro", ColorOnPlay);
+    }
+    private void FileOnLoad(OscMessage message) {
+        string a = message.ToString();
+        a = a.Remove(a.IndexOf("/file "), "/file ".Length);
+        if (!a.Contains("tempoSynth."))
+        {
+            if (!fileName.Contains(a)) {
+               fileName.Add(a);
+
+               soundResCues[fileName.Count-1].name = a;
+               soundResCues[fileName.Count - 1].valueDisp.text = a;
+            }
+        }
     }
 
     private void ColorOnPlay(OscMessage message)
@@ -71,7 +88,16 @@ public class SoundManager : MonoBehaviour
             osc.Send(message);
         }
     }
+    public void updateVolume(string name, int state)
+    {
 
+        OscMessage message;
+        message = new OscMessage();
+        message.address = "UpdateVolume";
+        message.values.Add(name);
+        message.values.Add(state);
+        osc.Send(message);
+    }
     private void resetMax()
     {
         OscMessage message;
@@ -111,6 +137,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PreviewSound(string name,  int state) {
+
         OscMessage message;
         message = new OscMessage();
         message.address = "PreviewSound";

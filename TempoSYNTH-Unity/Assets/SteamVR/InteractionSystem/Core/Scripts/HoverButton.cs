@@ -51,6 +51,7 @@ namespace Valve.VR.InteractionSystem
             handEnteredPosition = endPosition;
         }
 
+
         private void HandHoverUpdate(Hand hand)
         {
             bool curstate = SteamVR_Input.GetState("GrabPinch", SteamVR_Input_Sources.Any);

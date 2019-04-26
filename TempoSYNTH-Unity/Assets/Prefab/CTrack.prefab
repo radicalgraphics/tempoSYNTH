@@ -329,8 +329,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989829493631370
@@ -438,8 +438,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989829869300835
@@ -547,8 +547,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989829884674052
@@ -656,8 +656,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989830009543865
@@ -765,8 +765,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989830010199415
@@ -874,8 +874,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989830089247030
@@ -983,8 +983,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989830138923351
@@ -1092,8 +1092,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989830206044343
@@ -1201,8 +1201,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989830500879815
@@ -1310,8 +1310,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989830769368076
@@ -1419,8 +1419,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989830876990261
@@ -1528,8 +1528,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989831027751081
@@ -1637,8 +1637,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989831215932916
@@ -1746,8 +1746,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989831239364841
@@ -1855,8 +1855,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5906989831351450966
@@ -1964,7 +1964,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.52
+  m_Radius: 0.23
+  m_Height: 1.19
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

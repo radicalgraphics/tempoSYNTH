@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
@@ -12,7 +13,6 @@ public class SoundCube : MonoBehaviour
     private Interactable interactable;
 
     private SoundManager sound;
-    public string SoundName;
 
     //-------------------------------------------------
     void Awake()
@@ -27,7 +27,6 @@ public class SoundCube : MonoBehaviour
 
     private void Start()
     {
-        this.name = SoundName;
         locationUI.text = "";
         nameUI.text = this.name;
 
@@ -36,21 +35,16 @@ public class SoundCube : MonoBehaviour
     }
 
 
-    //-------------------------------------------------
-    // Called when a Hand starts hovering over this object
-    //-------------------------------------------------
     private void OnHandHoverBegin(Hand hand)
     {
-
+        if (this.transform.parent == null)
+        { sound.PreviewSound(this.name, 1); }
     }
 
-
-    //-------------------------------------------------
-    // Called when a Hand stops hovering over this object
-    //-------------------------------------------------
     private void OnHandHoverEnd(Hand hand)
     {
-
+        //if (this.transform.parent == null)
+        //{ sound.PreviewSound(name, 0); }
     }
 
 
@@ -150,14 +144,24 @@ public class SoundCube : MonoBehaviour
         {
             if (attached)
             {
-                locationUI.text = other.name;
+                locationUI.text = toMusical(other.name);
                 lastPoint = other.transform;
-
             }
         }
     }
 
-
+    private string toMusical(string par)
+    {
+        int toCal = int.Parse(par) + 1;
+        int a = (toCal - 1) / 4 + 1;
+        int b = toCal % 4;
+        if (b == 0)
+        {
+            b = 4;
+        }
+        string res = a + ": " + b;
+        return res;
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "TrackPosition")
@@ -166,8 +170,10 @@ public class SoundCube : MonoBehaviour
             {
                 //sound.removeSound(this.name, int.Parse(other.name));
                 locationUI.text = null;
-                sound.removeSound(this.name, int.Parse(lastPoint.name));
-                
+                if (lastPoint != null)
+                {
+                    sound.removeSound(this.name, int.Parse(lastPoint.name));
+                }
                 lastPoint = null;
                 
             }

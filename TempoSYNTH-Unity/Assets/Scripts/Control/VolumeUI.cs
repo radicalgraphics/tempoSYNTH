@@ -5,7 +5,7 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-public class BPMUI : MonoBehaviour
+public class VolumeUI : MonoBehaviour
 {
 
 
@@ -22,9 +22,10 @@ public class BPMUI : MonoBehaviour
         valueDisp = GetComponent<TextMesh>();
         lm = GetComponent<LinearMapping>();
         sm.BPM = valueToBPM(lm.value);
-        valueDisp.text = "BPM: "+String.Format("{0:000}",sm.BPM.ToString());
+        valueDisp.text = "Volume: " + String.Format("{0:000}", sm.BPM.ToString());
     }
-    private void HandHoverUpdate(Hand hand) {
+    private void HandHoverUpdate(Hand hand)
+    {
         valueDisp.transform.rotation = Camera.main.transform.rotation;
     }
 
@@ -39,18 +40,19 @@ public class BPMUI : MonoBehaviour
             int newBPM = valueToBPM(lm.value);
             if (sm.BPM != newBPM)
             {
-            sm.BPM = newBPM;
-            valueDisp.text = "BPM: " + String.Format("{0:000}", sm.BPM.ToString());
-                sm.UpdateBPM(sm.BPM);
+                sm.BPM = newBPM;
+                valueDisp.text = "Volume: " + String.Format("{0:000}", sm.BPM.ToString()); 
+                sm.updateVolume(this.transform.parent.parent.name,sm.BPM);
             }
         }
 
-        }
+    }
 
-    int valueToBPM(float x) {
+    int valueToBPM(float x)
+    {
         int y = (int)(Math.Round(x, 3) * (maxBPM - minBPM) + minBPM);
         return y;
     }
 
- 
+
 }
