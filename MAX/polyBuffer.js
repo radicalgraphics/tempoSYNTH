@@ -16,7 +16,7 @@ function IndexToName(index){
 }
 
 function NameToIndex(nam){
-	post(nam);
+	var dump = pb.getshortname();
 	for (var i = 0; i < (pb.count*2); i++) {
 		if(dump[i] == nam){
 		outlet(0,(i+1)/2);
