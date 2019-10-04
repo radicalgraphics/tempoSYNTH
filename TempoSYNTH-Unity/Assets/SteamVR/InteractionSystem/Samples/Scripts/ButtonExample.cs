@@ -35,7 +35,6 @@ public class ButtonExample : MonoBehaviour
 
         }
 
-
         //-------------------------------------------------
         // Called when a Hand stops hovering over this object
         //-------------------------------------------------
