@@ -17,25 +17,34 @@ Impulse imp => dac;
 16=>int countTo;
 0 => int counter;
 
+//MIDI
+MidiOut mout;
+mout.open(0);
 
 //tempo
-150 => float bpm;
+20 => float bpm; 
 1::minute/bpm => dur metrotime;
 metrotime => dur timeToNext;
-
 
 
 spork ~ keylistener();
 
 while(true) {
    
+   
     if(timeToNext <= 0::ms) {
+        MidiMsg msg;
+        0x90 => msg.data1;
+        60 => msg.data2;
+        40 => msg.data3;
+        mout.send(msg);
+        
         // start the message...
         xmit.start( "/metro" );
         counter => xmit.add;
         xmit.send();
         <<<counter>>>;
-        1 => imp.next;
+        //1 => imp.next;
         metrotime => timeToNext;
         counter+1 => counter;
         if(counter == countTo) 0 => counter;
