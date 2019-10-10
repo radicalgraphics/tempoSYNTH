@@ -33,7 +33,7 @@ This function allows user to preview sound when they reach controller to the sou
 
 ### Max Sending /  Unity Recieving
 - ```/metro int i```
-  This function sends clock ticks to Unity, I.E. 1,2,3,4, or 1,2,3....16 (I think this could be done in a differentway)
+  This function sends clock ticks to Unitmmm, n$,m,,mm $y, I.E. 1,2,3,4, or 1,2,3....16 (I think this could be done in a differentway)
     - i: the location of clock tick
 
 - ```/file string sampleName```
