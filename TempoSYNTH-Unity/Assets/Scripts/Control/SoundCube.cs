@@ -11,7 +11,6 @@ public class SoundCube : MonoBehaviour
     private TextMesh nameUI;
     private Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags & (~Hand.AttachmentFlags.SnapOnAttach) & (~Hand.AttachmentFlags.DetachOthers) & (~Hand.AttachmentFlags.VelocityMovement);
     private Interactable interactable;
-
     private SoundManager sound;
 
     //-------------------------------------------------

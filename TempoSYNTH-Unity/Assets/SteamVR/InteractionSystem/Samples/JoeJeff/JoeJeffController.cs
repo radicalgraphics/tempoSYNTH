@@ -34,6 +34,9 @@ namespace Valve.VR.InteractionSystem.Sample
             {
                 hand = interactable.attachedToHand.handType;
                 Vector2 m = moveAction[hand].axis;
+
+                Debug.Log(m.ToString());
+
                 movement = new Vector3(m.x, 0, m.y);
 
                 jump = jumpAction[hand].stateDown;
