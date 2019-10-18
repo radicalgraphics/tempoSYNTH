@@ -1,23 +1,25 @@
 ###API documentation that handles OSC message between Unity and MAX
 
-Each of the follwing functions works similar to POST request in HTTP protocal. 
+Each of the follwing functions works similar to POST request in HTTP protocal.
 
 ### Unity Sending / Max Recieving
 
+/[Function Name] [param1] [param2]
+
 - ```AddSound(string sampleName,string Location)```
-This function is called when a sound sample cude is inserted to a track in unity.
+This function is called when a sound sample cube is inserted to a track in unity.
    * sampleName: the name of the sound sample (from sound cube)
    * Location: the location of the sound sample cube inserted to the track(from the track)
 
 - ```RemoveSound(string sampleName,string Location)```
-This function is called when a sound sample cude is removed from a track in unity.
+This function is called when a sound sample cube is removed from a track in unity.
   * sampleName: the name of the sound sample (from sound cube)
   * Location: the location of the sound sample cube being removed from the track
 
 - ```UpdateBPM(int BPM)```
 update BPM using the slider
   * BPM: a new int value modified by user
-  
+
 - ```PreviewSound(string sampleName)```
 This function allows user to preview sound when they reach controller to the soundcube
   * sampleName: the name of the sound sample (from sound cube)
@@ -39,4 +41,3 @@ This function allows user to preview sound when they reach controller to the sou
 - ```/file string sampleName```
 This function is called at every start of the environment, it parses the sound sample folder and send it to unity so it can populate sound samples dynamically.
     - sampleName: the name of sound sample from folder.
-  
