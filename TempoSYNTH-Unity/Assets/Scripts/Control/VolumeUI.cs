@@ -11,18 +11,18 @@ public class VolumeUI : MonoBehaviour
 
     private LinearMapping lm;
     private TextMesh valueDisp;
-    public int minBPM = 60;
-    public int maxBPM = 220;
+    public int minVal = 0;
+    public int maxVal = 100;
+    private int curVal;
     private Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags & (~Hand.AttachmentFlags.SnapOnAttach) & (~Hand.AttachmentFlags.DetachOthers) & (~Hand.AttachmentFlags.VelocityMovement);
-    private SoundManager sm;
+    
 
     void Start()
     {
-        sm = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         valueDisp = GetComponent<TextMesh>();
         lm = GetComponent<LinearMapping>();
-        sm.BPM = valueToBPM(lm.value);
-        valueDisp.text = "Volume: " + String.Format("{0:000}", sm.BPM.ToString());
+        curVal = valueMapping(lm.value);
+        valueDisp.text = "Pitch: " + String.Format("{0:000}", curVal.ToString());
     }
     private void HandHoverUpdate(Hand hand)
     {
@@ -37,20 +37,19 @@ public class VolumeUI : MonoBehaviour
 
         if (curstate)
         {
-            int newBPM = valueToBPM(lm.value);
-            if (sm.BPM != newBPM)
+            int newBPM = valueMapping(lm.value);
+            if (curVal != newBPM)
             {
-                sm.BPM = newBPM;
-                valueDisp.text = "Volume: " + String.Format("{0:000}", sm.BPM.ToString()); 
-                sm.updateVolume(this.transform.parent.parent.name,sm.BPM);
+                curVal = newBPM;
+                valueDisp.text = "Pitch: " + String.Format("{0:000}", curVal.ToString()); 
             }
         }
 
     }
 
-    int valueToBPM(float x)
+    int valueMapping(float x)
     {
-        int y = (int)(Math.Round(x, 3) * (maxBPM - minBPM) + minBPM);
+        int y = (int)(Math.Round(x, 3) * (maxVal - minVal) + minVal);
         return y;
     }
 
